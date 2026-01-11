@@ -55,7 +55,7 @@ impl<SPI: SpiDevice> PixArtSensor<SPI> {
             RotationDegrees::_270 => INVERT_X,
         };
 
-        // debug!("Setting rotation to {:?}", rotation);
+        debug!("Setting rotation to {:?}", rotation);
         self.write(register::ORIENTATION, orientation).await
     }
 
@@ -81,7 +81,7 @@ impl<SPI: SpiDevice> PixArtSensor<SPI> {
                 y: motion_raw.y,
             })
         } else {
-            // debug!("Motion data failed validation: {}", motion_raw);
+            debug!("Motion data failed validation: {}", motion_raw);
             Err(SensorError::InvalidMotion)
         }
     }
@@ -175,6 +175,7 @@ pub struct Id {
 }
 
 /// Enumeration of valid rotation settings
+#[derive(Format)]
 pub enum RotationDegrees {
     _0 = 0,
     _90 = 90,
@@ -191,7 +192,7 @@ pub struct MotionDelta {
 }
 
 #[repr(C)]
-#[derive(Pod, Clone, Copy, Zeroable, Debug, PartialEq)]
+#[derive(Pod, Clone, Copy, Zeroable, Debug, PartialEq, Format)]
 struct MotionRaw {
     dr: u8,
     obs: u8,
