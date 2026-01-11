@@ -55,7 +55,7 @@ impl<SPI: SpiDevice> PixArtSensor<SPI> {
             RotationDegrees::_270 => INVERT_X,
         };
 
-        debug!("Setting rotation to {:?}", rotation);
+        // debug!("Setting rotation to {:?}", rotation);
         self.write(register::ORIENTATION, orientation).await
     }
 
@@ -81,7 +81,7 @@ impl<SPI: SpiDevice> PixArtSensor<SPI> {
                 y: motion_raw.y,
             })
         } else {
-            debug!("Motion data failed validation: {}", motion_raw);
+            // debug!("Motion data failed validation: {}", motion_raw);
             Err(SensorError::InvalidMotion)
         }
     }
