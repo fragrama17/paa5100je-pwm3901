@@ -175,6 +175,7 @@ pub struct Id {
 }
 
 /// Enumeration of valid rotation settings
+#[derive(Format)]
 pub enum RotationDegrees {
     _0 = 0,
     _90 = 90,
@@ -191,7 +192,7 @@ pub struct MotionDelta {
 }
 
 #[repr(C)]
-#[derive(Pod, Clone, Copy, Zeroable, Debug, PartialEq)]
+#[derive(Pod, Clone, Copy, Zeroable, Debug, PartialEq, Format)]
 struct MotionRaw {
     dr: u8,
     obs: u8,
