@@ -173,6 +173,7 @@ impl<SPI: SpiDevice> PixArtSensor<SPI> {
 
 /// Enumeration of possible errors encountered by the sensor driver
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature="defmt", derive(Format))]
 pub enum SensorError {
     /// An error occurred during SPI comms.
     Spi(embedded_hal_async::spi::ErrorKind),

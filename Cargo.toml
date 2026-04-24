@@ -11,7 +11,7 @@ defmt = ["dep:defmt"]
 
 [dependencies]
 maybe-async = { version = "0.2.10" }
-embedded-hal = { version = "*" }
-embedded-hal-async = { version = "*" }
+embedded-hal = { version = "*", features = ["defmt-03"] }
+embedded-hal-async = { version = "*" , features = ["defmt-03"]}
 defmt = { version =  "1.0.1", optional = true }
 bytemuck = { version = "1.21.0", features = ["derive"] }
